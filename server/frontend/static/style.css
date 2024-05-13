@@ -13,6 +13,14 @@ img{
   margin-bottom: 1%;
 }
 
+.container_round{
+    outline: 3px ridge rgba(124, 123, 124, 0.822);
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 2rem;
+    display: flex;
+  }
+
 .row{
   display: flex;  
   flex: 1;
@@ -123,4 +131,13 @@ img{
     border-radius:50px;
     text-align:center;
     box-shadow: 2px 2px 3px #999;  
+}
+
+.contact_txt{
+    align-self: center;
+    text-align: center;
+}
+
+.bolder{
+    font-weight: bold;
 }
