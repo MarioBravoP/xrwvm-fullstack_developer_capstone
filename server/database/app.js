@@ -1,8 +1,10 @@
+/*jshint esversion: 8 */
+
 const express = require('express');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const  cors = require('cors')
-const app = express()
+const  cors = require('cors');
+const app = express();
 const port = 3030;
 
 app.use(cors())
@@ -19,16 +21,16 @@ const Reviews = require('./review');
 const Dealerships = require('./dealership');
 
 try {
-  Reviews.deleteMany({}).then(()=>{
-    Reviews.insertMany(reviews_data['reviews']);
-  });
-  Dealerships.deleteMany({}).then(()=>{
-    Dealerships.insertMany(dealerships_data['dealerships']);
-  });
-  
-} catch (error) {
-  res.status(500).json({ error: 'Error fetching documents' });
-}
+    Reviews.deleteMany({}).then(()=>{
+      Reviews.insertMany(reviews_data.reviews);
+    });
+    Dealerships.deleteMany({}).then(()=>{
+      Dealerships.insertMany(dealerships_data.dealerships);
+    });
+    
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching documents' });
+  }
 
 
 // Express route to home
@@ -78,13 +80,13 @@ app.get('/fetchDealers/:state', async (req, res) => {
 
 // Express route to fetch dealer by a particular id
 app.get('/fetchDealer/:id', async (req, res) => {
-  try {
-    const documents = await Dealerships.find({ id: req.params.id });
-    res.json(documents);
-  } catch (error) {
-    res.status(500).json({ error: 'Error fetching dealers by ID' });
-  }
-});
+    try {
+      const documents = await Dealerships.find({ id: req.params.id });
+      res.json(documents);
+    } catch (error) {
+      res.status(500).json({ error: 'Error fetching dealers by ID' });
+    }
+  });
 
 //Express route to insert review
 app.post('/insert_review', express.raw({ type: '*/*' }), async (req, res) => {
