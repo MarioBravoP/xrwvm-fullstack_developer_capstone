@@ -30,21 +30,27 @@ class CarModel(models.Model):
     ]
     type = models.CharField(max_length=12, choices=CAR_TYPES, default='SUV')
 
-    year = models.IntegerField(default=2023,
+    year = models.IntegerField(
+        default=2023,
         validators=[
             MaxValueValidator(2023),
             MinValueValidator(2015),
-            ])
+            ]
+        )
 
-    dealer_id = models.IntegerField(default=0,
+    dealer_id = models.IntegerField(
+        default=0,
         validators=[
             MinValueValidator(0)
-            ])
+            ]
+        )
 
-    mileage = models.IntegerField(default=0,
+    mileage = models.IntegerField(
+        default=0,
         validators=[
             MinValueValidator(0)
-            ])
+            ]
+        )
 
     def __str__(self):
         return self.name  # Return the name as the string representation
